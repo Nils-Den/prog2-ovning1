@@ -1,4 +1,4 @@
-
+package se.su.ovning1;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
