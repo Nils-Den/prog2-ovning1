@@ -1,5 +1,5 @@
 
-//package se.su.ovning1;
+package se.su.ovning1;
 
 public abstract class Recording extends Item implements PriceableWithVAT25 {
 
@@ -39,6 +39,8 @@ public abstract class Recording extends Item implements PriceableWithVAT25 {
     }
 
     public String toString() {
-        return getType() +" { "+ "name='" + getName() + "', artist='" + artist + "', year=" + year + ", condition=" + condition +", original price=" +getOriginalPrice() + ", price= " + getPrice() + ", price+VAT=" + getPriceWithVAT() + " }";
+        return getType() + " { " + "name='" + getName() + "', artist='" + artist + "', year=" + year + ", condition="
+                + condition + ", original price=" + getOriginalPrice() + ", price= " + getPrice() + ", price+VAT="
+                + getPriceWithVAT() + " }";
     }
 }
