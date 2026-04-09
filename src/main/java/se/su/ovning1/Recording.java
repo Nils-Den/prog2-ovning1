@@ -1,8 +1,9 @@
 package se.su.ovning1;
 import java.util.Collection;
 import java.util.Set;
+import java.util.Objects;
 
-public class Recording {
+public class Recording extends Object{
 	private final int year;
 	private final String artist;
 	private final String title;
@@ -16,7 +17,20 @@ public class Recording {
 		this.type = type;
 		this.genre = genre;
 	}
-
+	@Override
+	public boolean equals(Object other){
+		if(this==other){
+			return true;
+		}
+		if (other instanceof Recording){
+			Recording recording = (Recording) other;
+			return this.title == recording.title && this.artist==recording.artist && this.year==recording.year;
+		} else {return false;}
+	}
+	@Override
+	public int hashCode(){
+		return Objects.hash(title, artist, year);
+	}
 	public String getArtist() {
 		return artist;
 	}
