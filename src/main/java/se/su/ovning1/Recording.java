@@ -1,46 +1,44 @@
-
 package se.su.ovning1;
+import java.util.Collection;
+import java.util.Set;
 
-public abstract class Recording extends Item implements PriceableWithVAT25 {
+public class Recording {
+	private final int year;
+	private final String artist;
+	private final String title;
+	private final String type;
+	private final Set<String> genre;
 
-    private final String artist;
-    private final int year;
-    private int condition;
-    private final double price;
+	public Recording(String title, String artist, int year, String type, Set<String> genre) {
+		this.title = title;
+		this.year = year;
+		this.artist = artist;
+		this.type = type;
+		this.genre = genre;
+	}
 
-    protected Recording(String name, String artist, int year, int condition, double price) {
-        super(name);
-        this.artist = artist;
-        this.year = year;
-        this.condition = condition;
-        this.price = price;
-    }
+	public String getArtist() {
+		return artist;
+	}
 
-    public abstract String getType();
+	public Collection<String> getGenre() {
+		return genre;
+	}
 
-    public String getArtist() {
-        return this.artist;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public int getYear() {
-        return year;
-    }
+	public String getType() {
+		return type;
+	}
 
-    public int getCondition() {
-        return condition;
-    }
+	public int getYear() {
+		return year;
+	}
 
-    public double getPrice() {
-        return Math.max(10, price * condition / 10.0);
-    }
-
-    protected double getOriginalPrice() {
-        return price;
-    }
-
-    public String toString() {
-        return getType() + " { " + "name='" + getName() + "', artist='" + artist + "', year=" + year + ", condition="
-                + condition + ", original price=" + getOriginalPrice() + ", price= " + getPrice() + ", price+VAT="
-                + getPriceWithVAT() + " }";
-    }
+	@Override
+	public String toString() {
+		return String.format("{ %s | %s | %s | %d | %s }", artist, title, genre, year, type);
+	}
 }
