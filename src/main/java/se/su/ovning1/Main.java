@@ -2,6 +2,12 @@ package se.su.ovning1;
 
 public class Main {
     public static void main(String[] args) {
+        
+        //VÅR EGEN KOD:
+        //Searcher searcher = new Searcher(new Data().getRecordings());
+
+        //System.out.print(searcher.getGenres());
+
 
         Item book1 = new Book("A guide to modern jazz", "Unknown author", 100, false);
         Item book2 = new Book("Beethoven: a biography", "Holmqvist", 400, false);
