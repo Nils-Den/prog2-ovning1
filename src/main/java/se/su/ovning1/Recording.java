@@ -3,7 +3,7 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.Objects;
 
-public class Recording extends Object{
+public class Recording extends Object implements Comparable<Recording>{
 	private final int year;
 	private final String artist;
 	private final String title;
@@ -33,6 +33,12 @@ public class Recording extends Object{
 	}
 	public String getArtist() {
 		return artist;
+	}
+	@Override
+	public int compareTo(Recording other){
+		if (this.getArtist().equals(other.getArtist() )&& this.getYear()==other.getYear()&& this.getTitle().equals(other.getTitle())){
+			return 0;
+		} return 1;
 	}
 
 	public Collection<String> getGenre() {

@@ -6,24 +6,28 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.TreeSet; 
+import java.util.TreeMap; 
 
 
 public class Searcher implements SearchOperations{
 
 	private HashMap<Integer, Recording> recordingMap = new HashMap<Integer, Recording>();
-	private HashMap<Integer, Recording> recordingMapp = new HashMap<Integer, Recording>();
-	private HashSet<String> recordingSet = new HashSet<String>();
+	private TreeMap<Integer, Recording> recordingTreeMap = new TreeMap<Integer, Recording>();
 	
 	public Searcher(Collection<Recording> data) {
 		HashMap<Integer, Recording> allRecordings = new HashMap<>();
 		for (Recording recording : data) {
 			allRecordings.put(recording.hashCode(), recording);
-			
 		}
 		this.recordingMap = allRecordings; // Collection<Recording> togs bort från original kod
+		
+		TreeMap<Integer, Recording> recordingTreeMap = new TreeMap<>();
+		for(Recording recording : data){
+			recordingTreeMap.put(recording.getYear(), recording);
+		}
+		this.recordingTreeMap = recordingTreeMap;
 	}
-
 
 	public long numberOfArtists() {
 		HashSet<String> allArtists = new HashSet<String>();
@@ -100,7 +104,6 @@ public class Searcher implements SearchOperations{
 			}
 		}
 		return Collections.unmodifiableSortedSet(artistRecords);
-		// INTE KLAR
 	}
 
 	public Collection<Recording> getRecordingsByGenre(String genre){
@@ -125,12 +128,13 @@ public class Searcher implements SearchOperations{
 
 	public Collection<Recording> offerHasNewRecordings(Collection<Recording> records){ //hette recordings förut
 		HashSet<Recording> recordsByOffer = new HashSet<Recording>();
-		for (Recording recording : records) {
-			if(!recordingMap.values().contains(recording)){
-				recordsByOffer.add(recording);
-			}			
+		HashSet<Recording> tempSet = new HashSet<Recording>(records);
+		//recordsByOffer.addAll(records);
+		for(Recording recording : recordingTreeMap.values()){
+			recordsByOffer.add(recording);
 		}
-		return Collections.unmodifiableSet(recordsByOffer);
-	}
+	
+		tempSet.removeAll(recordsByOffer);
+		return Collections.unmodifiableSet(tempSet);}
 
 }
