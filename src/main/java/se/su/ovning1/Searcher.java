@@ -20,19 +20,42 @@ public class Searcher implements SearchOperations{
 	}
 
 	public long numberOfArtists() {
-		return 0;
+		HashSet<String> allArtists = new HashSet<String>();
+		int count = 0;
+		for (Recording recording : recordings.values()) {
+			allArtists.add(recording.getArtist());
+		} for (String elemenet : allArtists){
+			count++;
+		}
+		return count;
 	}
 
 	public long numberOfGenres() {
-		return 0;
+		Collection<String> allGenres = getGenres();
+		long count = 0;
+		for(String genre : allGenres){
+			count++;
+		}
+		return count;
 	}
 
 	public long numberOfTitles() {
-		return 0;
+		HashSet<String> allTitles = new HashSet<String>();
+		int count = 0;
+		for (Recording recording : recordings.values()) {
+			allTitles.add(recording.getTitle());
+		} for (String elemenet : allTitles){
+			count++;
+		}
+		return count;
 	}
 
 	public boolean doesArtistExist(String artist) {
-		return true;
+		HashSet<String> allArtists = new HashSet<String>();
+		for (Recording recording : recordings.values()) {
+			allArtists.add(recording.getArtist());	
+		}
+			return allArtists.contains(artist);
 	}
 
 	public Collection<String> getGenres() {
@@ -44,10 +67,13 @@ public class Searcher implements SearchOperations{
 
 	}
 
-	public Recording getRecordingByName(String titel) {
-		String artist = "Bruce Springsteen";
-		return recordings.get(artist);
-		// DETTA SKA VI INTE HA
+	public Recording getRecordingByName(String title) {
+		for (Recording recording : recordings.values()) {
+			if (recording.getTitle().equals(title)){
+				return recording;
+			}			
+		}
+			return null;
 	}
 
 	public Collection<Recording> getRecordingsAfter(int yearOne) {
