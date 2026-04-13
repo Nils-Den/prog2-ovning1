@@ -1,4 +1,4 @@
-package se.su.ovning1;
+/* package se.su.ovning1;
 
 public class LongPlay extends Recording {
     public LongPlay(String name, String artist, int year, int condition, double price) {
@@ -14,4 +14,4 @@ public class LongPlay extends Recording {
         return Math.max(10, getOriginalPrice() * getCondition() / 10.0 + (2026 - getYear()) * 5);
 
     }
-}
+} */

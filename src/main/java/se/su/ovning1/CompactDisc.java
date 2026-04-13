@@ -1,4 +1,4 @@
-package se.su.ovning1;
+/* package se.su.ovning1;
 
 public class CompactDisc extends Recording {
 
@@ -11,3 +11,4 @@ public class CompactDisc extends Recording {
     }
 
 }
+*/
