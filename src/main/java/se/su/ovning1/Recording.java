@@ -36,9 +36,21 @@ public class Recording extends Object implements Comparable<Recording>{
 	}
 	@Override
 	public int compareTo(Recording other){
-		if (this.getArtist().equals(other.getArtist() )&& this.getYear()==other.getYear()&& this.getTitle().equals(other.getTitle())){
+		if (year > other.year){
+			return 1;
+		}else if(year < other.year){
+			return -1;
+		}else if (title.compareTo(other.title) > 0){
+			return 1;
+		}else if (title.compareTo(other.title) < 0){
+			return -1;
+		}else if (artist.compareTo(other.artist) > 0){
+			return 1;
+		}else if (artist.compareTo(other.artist) < 0){
+			return -1;
+		}else{
 			return 0;
-		} return 1;
+		}
 	}
 
 	public Collection<String> getGenre() {
